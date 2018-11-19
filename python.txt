@@ -1,0 +1,1315 @@
+安装ipython   pip install ipython
+pip :   需要epel 源
+yum install -y python-pip
+
+
+pypi.python.org/pypi/ipython       pip去这个网站找包下载的 
+
+pip  install ipython==1.2.1   适用于  python2.6
+
+ENV 虚拟环境    activate    /  deactivate
+
+
+
+
+
+
+
+
+这是1.py 文件的开头
+#!/usr/bin/python
+print "hello world"'
+
+执行 python  1.py  即可运行
+
+
+1.源代码
+python源代码文件以"py"为扩展名，由python程序解析，不需要编译
+
+2.字节代码
+python源码文件经编译后生成的扩展名为"pyc"文件
+编译方法:
+import py_compile
+py_compile.compile("hello.py")
+
+使其编译后生成pyc的后缀名文件，为二进制文件
+
+优化编译 
+python -O -m py_compile 1.py
+  -O : 代表优化编译
+  -m : 指定模块mode 
+使其源码文件优化编译成"pyo"后缀名的二进制文件
+
+
+
+
+
+
+
+
+变量
+变量是计算机内存的一块区域，变量可以存储规定范围内的值，而且值可以改变，
+
+python下变量是对一个数据的引用
+
+
+变量的命名
+变量名由字母，数字，下划线组成
+变量不能用数字开头
+不可以使用关键字
+
+
+变量的赋值
+是变量的申明和定义的过程
+a = 1   #整型
+a = '1' #字符型
+id(a)
+
+type(a) #可以查看变量的类型
+
+
+
+
+赋值运算符
+= : x = 3, y = 'abcd'
++=: x += 2
+-=:  x -= 2
+*=:  x *= 2
+/=:  x /= 2
+%=:  x %= 2
+
+
+算术运算符
++ :  加
+- :  减
+* :  乘
+/ :  除
+//:  整除,只取整数部分
+% :  取余，取余数
+**:  乘方
+
+
+
+字符串的+ 相当于连接两个字符串
+
+
+关系运算符，返回结果为布尔值，即true和false （0和1）
+>  : 大于  
+<  : 小于
+>= : 大于等于
+<= : 小于等于
+== : 等于
+!= : 不等于
+
+
+
+逻辑运算符 优先级最高
+and  逻辑 与   
+or   逻辑 或
+not  逻辑 非  # 最高
+
+
+读取键盘输入函数
+input()      #会区别数字和字符串，如果是不加引号字符串即为变量，如果加，即为输出
+raw_input()  #无论是什么都当成字符串输出
+
+
+
+#!/usr/bin/python
+a = 8
+b = 4
+num1 = input("first number: ")
+num2 = input("last number: ")
+print "%s + %s = %s" % (num1,num2,num1+num2)
+print "%s - %s = %s" % (num1,num2,num1-num2)
+print "%s * %s = %s" % (num1,num2,num1*num2)
+print "%s / %s = %s" % (num1,num2,num1/num2)
+
+
+"%s" % (sum1,sum2,sum1+sum2)格式化字符串,也可当占位符，后面括号内的变量一一对应
+
+
+
+
+
+
+数值和字符串
+python 数据类型
+数值，字符串，列表，元组，字典
+
+Python 数值类型
+整型，长整型，浮点型（float），复数型，
+
+用 type（a） 来查看数值类型
+
+2**32 一共有这么多值 4294967296
+In [1]: 2**32
+Out[1]: 4294967296
+
+范围在 -2147483648 ~ 2147483647  （中间包涵0）
+
+除数与被除数 只要有浮点数，结果就有浮点型
+
+
+字符串类型
+
+#在shell 里，单引号全部引用，双引号部分引用
+
+三种方法定义字符串 类型
+str = 'this is a string'
+str = "this is a string"
+str = '''this is a string''' 或者 “““ this is a string ”””
+
+自动带入换行符，更友好的显示
+
+
+三重引号： 除了能定义字符串还可以用作注释
+
+
+
+字符串它也是个序列
+我们可以对它进行 索引 和 切片 操作
+索引用 a[1]
+
+
+切片是 步进值。相隔多少取多少
+
+
+
+
+
+
+总结：
+Python中数据类型
+计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。在Python中，能够直接处理的数据类型有以下几种：
+
+一、整数
+
+Python可以处理任意大小的整数，当然包括负整数，在Python程序中，整数的表示方法和数学上的写法一模一样，例如：1，100，-8080，0，等等。
+
+计算机由于使用二进制，所以，有时候用十六进制表示整数比较方便，十六进制用0x前缀和0-9，a-f表示，例如：0xff00，0xa5b4c3d2，等等。
+
+二、浮点数
+
+浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，比如，1.23x10^9和12.3x10^8是相等的。浮点数可以用数学写法，如1.23，3.14，-9.01，等等。但是对于很大或很小的浮点数，就必须用科学计数法表示，把10用e替代，1.23x10^9就是1.23e9，或者12.3e8，0.000012可以写成1.2e-5，等等。
+
+整数和浮点数在计算机内部存储的方式是不同的，整数运算永远是精确的（除法难道也是精确的？是的！），而浮点数运算则可能会有四舍五入的误差。
+
+三、字符串
+
+字符串是以''或""括起来的任意文本，比如'abc'，"xyz"等等。请注意，''或""本身只是一种表示方式，不是字符串的一部分，因此，字符串'abc'只有a，b，c这3个字符。
+
+四、布尔值
+
+布尔值和布尔代数的表示完全一致，一个布尔值只有True、False两种值，要么是True，要么是False，在Python中，可以直接用True、False表示布尔值（请注意大小写），也可以通过布尔运算计算出来。
+
+布尔值可以用and、or和not运算。
+
+and运算是与运算，只有所有都为 True，and运算结果才是 True。
+
+or运算是或运算，只要其中有一个为 True，or 运算结果就是 True。
+
+not运算是非运算，它是一个单目运算符，把 True 变成 False，False 变成 True。
+
+五、空值
+
+空值是Python里一个特殊的值，用None表示。None不能理解为0，因为0是有意义的，而None是一个特殊的空值。
+
+
+
+
+
+
+
+
+python 元组
+序列
+字符串，列表和元组都是序列
+序列的两个主要特点是索引操作符和切片操作符
+
+ 索引操作符: 从序列中抓取一个特定项目
+
+ 切片操作符: 能够获取序列的一个切片，即一部分序列
+
+
+1. len()    :  求序列的长度
+2. +        :  连接2个序列
+3. *        :  重复序列元素
+4. in       :  判断元素是否在序列中，not in 与其相反
+5. man()    :  返回最大值，可以判断字符
+6. min()    :  返回最小值
+7. cmp(x,y) :  比较两个序列是否相等
+   x > y  返回   1
+   x = y  返回   0
+   x < y  返回  -1
+   
+
+
+
+元组（tuple） 和列表相似
+元组合字符串一样是 不可变 的
+   通常用于接收函数的返回值
+  元组可以存储一系列的值
+  元组通常用在用户定义的函数能够安全地采用一组值的时候，即被使用的元组的值不会被改变
+
+
+元组 里面要有逗号，元组内还可存多个元组
+t = ('a',1,(1,c))
+
+元组操作 
+  元组和字符串一样属于序列类型，可以通过索引和切片操作
+  元组值不可变
+元组拆分
+   t = （1,2,3） 
+   a, b, b = t  
+
+
+b = (a, 'b', 'c')
+输出  b
+得   ('abcde', 'b', 'c')
+
+
+python 面向对象， 里面一切都是对象（变量，元组，字符串，数值）
+t = ('a',b,'c')
+t.    这样看他可用的方法
+t.count  t.index     两种方法
+
+通过help(t.count) 查看用法
+ count(...)
+   T.count(value) -> integer -- return number of occurrences of value
+这个value 在当前的元组里，则返回一个整数，
+即判断这个值是不是在元组里，如果是在返回 1 ，不在返回 0
+
+
+通过help(t.index) 查看用法
+index(...)
+    T.index(value, [start, [stop]]) -> integer -- return first index of value.
+    Raises ValueError if the value is not present.
+这个值返回的索引
+[start, [stop] 可选选项
+
+
+
+
+
+
+
+
+列表用[]   元组用()
+列表  可变类型的数据结构
+列表(list) 是处理一组有序项目的数据结构，即可以在列表中存储一个序列的项目，
+列表是可变类型的数据
+创建列表
+list = []
+list1 = list()
+list2 = ['a',1,2]
+
+
+列表操作
+取值
+ 切片和索引
+添加
+ list.append()
+删除
+ del list[]
+ list.remove(list[])
+   remove(...)
+    L.remove(value) -- remove first occurrence of value.
+    Raises ValueError if the value is not present.
+修改
+ list[] = x
+查找
+ var in list
+
+方法
+list.append   在最后加入
+
+list.count    统计指定元素个数
+ 
+list.extend   可迭代，列表追加，字符串，元组，列表，都是可迭代的，这样都是可以for循环
+
+list.index    索引
+
+list.insert   指定索引，插入
+
+list.pop      删除并返回删除的值，不指定索引位置，即为从最后一个剪切
+In : list
+Out: ['1', '2', '3']
+In : list.pop()
+Out: '3'
+In : list.pop()
+Out: '2'
+In : list
+Out: ['1']
+
+
+
+list.remove   删除一个元素
+
+list.reverse  将列表内的元素，反转
+In : list
+Out: ['g', 'f', 'e', 'd', 'c', 'b', 'a']
+In : list.reverse()
+In : list
+Out: ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+
+list.sort    排序 ，升序
+In : list.reverse()
+In : list
+Out: ['6', '5', '4', '3', '2', '1']
+In : list.sort()
+In : list
+Out: ['1', '2', '3', '4', '5', '6']
+
+
+
+
+
+
+
+
+字典(dict)   { }
+字典是Python 中的唯一的映射类型（哈希表）k-v:键-值
+字典对象是可变的，但是字典的键必须使用不可变对象，一个字典中可以使用不同类型的键值
+无序排序
+key 是唯一的
+
+字典方法
+keys( )   返回所有的keys ，列表显示
+values( ) 返回所有的values， 列表显示
+items( )   返回一个列表
+```
+In : dic
+Out: {'a': '1', 'b': 'abcsss', 'c': '123aaa'}
+
+In : dic.items()
+Out: [('a', '1'), ('c', '123aaa'), ('b', 'abcsss')]
+
+```
+
+dic.get(k) 返回K对应的values值，如果key不存在，则返回空
+```
+ D.get(k[,d]) -> D[k] if k in D, else d.  d defaults to None.
+```
+
+dic.has_key('k')    查看有没有这个Key
+
+
+dic.copy     复制字典
+
+dic.clear    清除
+
+dic.pop(k)     弹出k,并返回弹出的values
+```
+pop(...)
+    D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
+    If key is not found, d is returned if given, otherwise KeyError is raised
+```
+
+
+dic.update()   更新字典
+```
+update(...) 
+    D.update([E, ]**F) -> None.  Update D from dict/iterable E and F.
+    If E present and has a .keys() method, does:     for k in E: D[k] = E[k]
+    If E present and lacks .keys() method, does:     for (k, v) in E: D[k] = v
+    In either case, this is followed by: for k in F: D[k] = F[k]
+```
+
+
+创建字典
+dic = {}
+dic = dict()
+ dict((['a',1],['b',2]))
+
+In : dict(x=1,y=2)
+Out: {'x': 1, 'y': 2}
+
+
+fromkeys() 字典元素有相同的值，默认为None.
+ ddict = {}.fromkeys(('x','y'),100)	
+
+```
+fromkeys(...)
+    dict.fromkeys(S[,v]) -> New dict with keys from S and values equal to v.
+    v defaults to None.
+```
+  S 是序列，这序列有key
+
+In : dic.fromkeys('abc')
+Out: {'a': None, 'b': None, 'c': None}
+
+In : dic.fromkeys('abc',10)
+Out: {'a': 10, 'b': 10, 'c': 10}
+
+In : dic.fromkeys(range(5),10)
+Out: {0: 10, 1: 10, 2: 10, 3: 10, 4: 10}
+
+dic.items   显示为，列表+元组  [()]
+
+In : dit = {'a':a,'b':'b'}
+
+In : dit.items()
+Out: [('a', 'abcsss'), ('b', 'b')]
+
+
+range() 函数 是从0开始 指定到的数。
+range(5) 即为 0到4 5个数
+In : range(5)
+Out: [0, 1, 2, 3, 4]
+
+
+
+
+
+
+字典练习
+raw_input    读取的为字符串
+info = {}
+name = raw_input("input name: ")
+age = raw_input("input age:")
+
+存入字典
+info[ 'name'] = name
+info ['age'] = age
+
+print info.items()   变成列表+元组
+
+for k, v in info.items() :
+    print k + ":" +, v
+    print "%s : %s" % (k,  v) 
+print "END"
+
+
+
+
+
+
+
+
+python 流程控制条件
+
+if .  for  .  while 
+
+if语句 
+if expression:     #expression 关键字
+    statement(s)
+
+注：python 使用缩进作为其语句分组的方法，建议使用4个空格
+
+#!/usr/bin/python
+if 1:                    #1 为 True, 0为 False, None  也是false 
+    print "hello python"         
+
+not 即为非
+1 > 2    是不成立的false ，前面加了not ,结果就变成了true
+
+if 条件：
+    command       #条件为true，执行这个command
+elif 条件:
+    command      #当上面的条件不成立，这条成立，即执行这条command   
+else ：
+    command      #条件为false ，执行这个command
+
+字符串 > 数字 
+将字符串变为数值    init('3')
+
+#!/usr/bin/python
+while True:
+    suma = int(raw_input("please input the number :"))
+    if suma >= 90:
+        print "A"
+    elif suma >= 80:
+        print "B"
+    elif suma >= 60:
+        print "C"
+    elif suma == -1:
+        break
+    else :
+        print "D"
+print "END"
+
+
+if else
+逻辑值（bool）包含了两个值：
+Ture: 表示非空的量（比如: string，tuple，list, set , dictonary）,所以非零数
+Fals: 表示0，None ,空的量 等。
+
+
+
+a.lower()     全小写
+a.upper()    全大写
+
+In : a = 'abcd'
+
+In : a.lower()
+Out: 'abcd'
+
+In : a.upper()
+Out: 'ABCD'
+
+
+
+
+
+
+
+
+
+
+
+
+循环
+循环是一个结构，导致程序要重复一定的次数
+条件循环也是如此，当条件变为假，循环结束
+
+for 循环
+for 循环：
+在序列里，使用for 循环遍历
+
+语法：
+```
+  for iterating_var in sequence:
+     statement(s)
+```
+
+range()    返回一个真实的列表，可以用来做for循环的遍历
+
+```
+In   : range(10)
+Out: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+In : range(1,11,1)
+Out: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+In : range(1,11,2)
+Out: [1, 3, 5, 7, 9]
+
+In : range(1,11,3)
+Out: [1, 4, 7, 10]
+
+In : range(1,11,4)
+Out: [1, 5, 9]
+
+In : range(1,11,5)
+Out: [1, 6]
+```
+
+
+
+range(...)
+    range(stop) -> list of integers
+    range(start, stop[, step]) -> list of integers
+    
+    Return a list containing an arithmetic progression of integers.
+    range(i, j) returns [i, i+1, i+2, ..., j-1]; start (!) defaults to 0.
+    When step is given, it specifies the increment (or decrement).
+    For example, range(4) returns [0, 1, 2, 3].  The end point is omitted!
+    These are exactly the valid indices for a list of 4 elements.
+
+
+`print [i for i in range(1, 11) if i % 2 ==0] `   #列表重写
+#取偶数
+```
+for i in range(1, 11):
+    if i % 2 ==0:
+        print i
+```
+`print [i**2 for i in range(1,11) if i % 2 != 0]`  
+#将奇数乘方2
+```
+for i in range(1,11):
+    if i % 2 != 0:     #取奇数
+        print i**2      #乘方
+```
+```
+In : print [i for i in range(1,11) if i % 2 == 0]
+[2, 4, 6, 8, 10]
+
+In : print [i**2 for i in range(1,11) if i % 2 == 0]
+[4, 16, 36, 64, 100]
+
+In : for i in range(1,11):
+   ....:     if i %2 ==0:
+   ....:         print i**2
+   ....:         
+4
+16
+36
+64
+100
+
+In : print [i for i in range(1,11) if i % 2 == 0]
+[2, 4, 6, 8, 10]
+
+In : for i in range(1,11):
+   ....:     if i % 2 != 0:
+   ....:         print i**2 
+   ....:         
+1
+9
+25
+49
+81
+```
+
+
+`sum = sum + i     ==   sum += i `  写法不同结果相同
+
+```
+In : sum = 0
+
+In : for i in range(1,11):
+   ....:     sum = sum + i
+   ....: print sum
+   ....: 
+55
+
+
+In : sum = 0
+
+In : for i in range(1,11):
+   ....:     sum += i 
+   ....: print sum
+   ....: 
+55
+```
+
+xrange()     返回的是一个对象   object   ,只用在for 循环使用时才能正常输出列表值
+```
+class xrange(object)
+ |  xrange(stop) -> xrange object
+ |  xrange(start, stop[, step]) -> xrange object
+ |  
+ |  Like range(), but instead of returning a list, returns an object that
+ |  generates the numbers in the range on demand.  For looping, this is 
+ |  slightly faster than range() and more memory efficient.
+```
+ 只用在for 循环使用时才能正常输出列表值
+```
+In : xrange(1,11)
+Out: xrange(1, 11)
+
+In : a = xrange(1,11)
+
+In : type (a)
+Out: xrange
+
+In : print a
+xrange(1, 11)
+
+In : for i in a:
+   ....:     print i
+   ....:     
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
+
+
+
+
+for 遍历字典
+迭代遍历
+遍历序列：将序列中各个元素取出来
+直接从序列取值
+通过索引来取值
+
+注： "迭代" 指重复执行一个指令。
+
+乘方口诀表 输出方式
+```
+#!/usr/bin/python
+for i in xrange(1,10):                     #行数定义 1-9
+    for x in xrange(1,i+1):              #列数定义，要行数+1
+        print "%sx%s=%s" % (i, x, i*x),      #加逗号, 将换行变成一行输出
+    print                                                  #默认为换行
+```
+
+执行结果：
+```
+[root@hc python]# python for1.py 
+1x1=1
+2x1=2 2x2=4
+3x1=3 3x2=6 3x3=9
+4x1=4 4x2=8 4x3=12 4x4=16
+5x1=5 5x2=10 5x3=15 5x4=20 5x5=25
+6x1=6 6x2=12 6x3=18 6x4=24 6x5=30 6x6=36
+7x1=7 7x2=14 7x3=21 7x4=28 7x5=35 7x6=42 7x7=49
+8x1=8 8x2=16 8x3=24 8x4=32 8x5=40 8x6=48 8x7=56 8x8=64
+9x1=9 9x2=18 9x3=27 9x4=36 9x5=45 9x6=54 9x7=63 9x8=72 9x9=81
+```
+
+iteritems（） 返回一个对象object
+```
+help(a.iteritems)
+iteritems(...)
+    D.iteritems() -> an iterator over the (key, value) items of D
+```
+
+
+
+In : dic.fromkeys('abcd',10)
+Out: {'a': 10, 'b': 10, 'c': 10, 'd': 10}
+#一定一个字典
+
+In : a = dic.fromkeys('abcd',10)
+In : a
+Out: {'a': 10, 'b': 10, 'c': 10, 'd': 10}
+#赋值给a ，输出一个字典
+
+In : for i in a:
+   ....:     print i
+   ....:     
+a
+c
+b
+d
+#for 循环去遍历字典里的key值
+
+In : for i in a:
+    print i, a[i]
+   ....:     
+a 10
+c 10
+b 10
+d 10
+#for 循环去遍历字典里的key 和value 值 ，这里用到了索引查value值
+
+
+In : for i in a:
+    print "%s --> %s" % ( i, a[i])
+   ....:     
+a --> 10
+c --> 10
+b --> 10
+d --> 10
+#格式化输出
+
+
+In : for i in a:
+    print "%s --> %s" % ( i, a[i]),
+   ....:     
+a --> 10 c --> 10 b --> 10 d --> 10
+#逗号抑制它自动换号
+
+
+In : a.items()
+Out: [('a', 10), ('c', 10), ('b', 10), ('d', 10)]
+#将字典换成列表+元组
+
+
+In : for k, v in a.items():
+   ....:     print k, v
+   ....:     
+a 10
+c 10
+b 10
+d 10
+#列表和元组，for循环去遍历出 key和value
+
+In : for i in a.items():
+   ....:     print i
+   ....:     
+('a', 10)
+('c', 10)
+('b', 10)
+('d', 10)
+# 将列表里的元组，for循环遍历出来独立的元组
+
+In : for k, v in a.iteritems():
+    print k, v
+   ....:     
+a 10
+c 10
+b 10
+d 10
+#使用 iteritems()  其输出是一个object
+```
+
+
+
+
+
+
+
+
+循环退出
+else            ：for正常结束才会执行后面代码
+break         ：跳出该循环
+continue    ：当满足条件时，跳过当前，继续执行循环
+pass           : 站位，不做动作
+sys.exit()    : exit 立即结束。sys方法必须加载import sys
+
+for 循环的 else 
+for 循环如果正常结束，才会执行else 
+
+import sys
+import time
+for i in range(10):
+    if i == 8:
+        sys.exit()
+    if i == 6:
+        pass
+    if i == 7:
+        continue
+    time.sleep(1)
+    if i == 5:
+        break
+else:                     #正常结束才可以执行这条
+    print "END"      
+
+
+
+
+系统生成一个20以内的随机整数。
+玩家有6次机会进行猜猜看，每次猜测都有反馈（大了，小了，对了，结束）
+6次中，猜对了，玩家赢了。
+否则系统赢了
+
+
+随机模块
+import random
+random.randint(1,20)
+
+```
+#!/usr/bin/python
+import random
+num = random.randint(1,20)
+print ("OK, play my game")
+for i in range(1,7):
+    a = input("please input the number :")
+    if a >= 1 and a <= 20:
+        if num > a:
+            print ("input the number is small !")
+            print ("keep trying !"), i
+        elif num < a:
+            print ("input the number is big ! ")
+            print ("keep trying !"), i
+        elif num == a:
+            print ("Congratulations ! you win ! input the number is True !")
+            print ("the system num is "),num
+            break
+    else :
+        print "please input the number within 20 !"
+    if i == 6:
+            print ("game is over ,you loss! the number is "),num
+
+```
+
+输出结果
+```
+[root@hc python]# python test1.py 
+OK, play my game
+please input the number :3
+input the number is small !
+keep trying ! 1
+please input the number :3
+input the number is small !
+keep trying ! 2
+please input the number :3
+input the number is small !
+keep trying ! 3
+please input the number :3
+input the number is small !
+keep trying ! 4
+please input the number :3
+input the number is small !
+keep trying ! 5
+please input the number :3
+input the number is small !
+keep trying ! 6
+game is over ,you loss! the number is  8
+
+[root@hc python]# python test1.py 
+OK, play my game
+please input the number :10
+input the number is big ! 
+keep trying ! 1
+please input the number :7
+input the number is small !
+keep trying ! 2
+please input the number :8
+Congratulations ! you win ! input the number is True !
+the system num is  8
+
+```
+
+
+
+
+
+
+
+
+Python 流程控制
+while  循环
+
+
+while  和for 相比
+for循环用在有次数的循环上。
+
+while循环用在有条件的控制上。
+
+
+while 循环，直到表达式变为 false ，才能退出
+while 循环，表达式是一个逻辑表达式，必须返回一个true或者false
+语法
+while expression:
+    statement(s)
+else:                    #当循环正常退出才会执行下面的内容
+     statement(s)
+
+
+代码：
+```
+#!/usr/bin/python
+a = ''
+while a != 'q' :
+    a = raw_input("input the q for quit : ")
+    print "hello "
+    if not a:
+        break
+    if a == 'quit':
+        continue
+    print "continue"
+else :
+    print "is ture quit!"
+```
+
+结果：
+```
+[root@hc python]# python while.py 
+input the q for quit : 
+hello 
+[root@hc python]# python while.py 
+input the q for quit : a
+hello 
+continue
+input the q for quit : b
+hello 
+continue
+input the q for quit : c
+hello 
+continue
+input the q for quit : quit
+hello 
+input the q for quit : q
+hello 
+continue
+is ture quit!
+
+```
+
+
+
+
+
+
+
+Python 访问文件
+
+help(open)
+```
+open(...)
+    open(name[, mode[, buffering]]) -> file object
+    
+    Open a file using the file() type, returns a file object.  This is the
+    preferred way to open a file.  See file.__doc__ for further information.
+```
+
+open ：
+r       :   以 读 方式打开 ,默认只读
+w      :   以 写 方式打开，如果该文件存在则会被覆盖
+a       :   以 追加 模式
+
+r+     :   以 读写 模式打开
+w+    :   以 读写 模式打开（参见w）
+a+     :   以 读写 模式打开（参见a）
+
+rb      :   以 二进制 读模式打开
+wb     :   以 二进制 写模式打开（参见w）
+ab      :   以 二进制 追加模式打开（参见a）
+
+rb+    :   以 二进制 读写模式打开（参见r+）
+wb+  :    以 二进制 读写模式打开（参见w+）
+ab+   :    以 二进制 读写模式打开（参见a+）
+
+
+open     打开
+ 
+close    关闭
+
+fd.read()        #读一个字符
+
+fd.readline()    # 读一行
+
+fd.readlines()   #读多行，返回列表
+
+fd.next()     #也是一行一行的读取      
+
+
+#!/usr/bin/python
+fd = open("/tmp/123")
+for i in fd.readlines():    #很占用资源  
+    print i,
+fd.close()
+
+for i in fd:      #这样用，因为fd已经是一个object了,当去for循环去遍历才一行行输出，这样很达成度的减少耗费资源
+    print i
+fd.close()
+
+
+#!/usr/bin/python
+
+fd = open("/tmp/123")
+while True:
+    line = fd.readline()
+    if not line:
+        break
+    print line,    #加逗号抑制print的换行符
+fd.close()
+
+
+with open
+可以不用最后关闭文件  .close()  它自动关闭
+
+with open("目录") as 变量:
+
+#!/usr/bin/python
+with open("/tmp/123") as fd:   #注意with open的格式
+    while True:
+        line = fd.readline()
+        if not line:
+            break
+        print line,
+
+#!/usr/bin/python
+fd = open("/tmp/123")
+while True:
+    line = fd.readline()
+    if not line:
+        break
+    print line,
+fd.close()
+
+输出也一直
+[root@hc python]# python open.py 
+asd
+123
+333
+zxc
+aaa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
