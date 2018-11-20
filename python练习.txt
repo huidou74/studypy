@@ -1,0 +1,152 @@
+练习1：
+将 “123” 转换成整数
+
+In : a = "123"
+
+In : type(a)
+Out: str
+
+In : type(int(a))
+Out: int
+
+In : a = int(a)
+
+In   : a
+Out: 123
+
+In   : type(a)
+Out: int
+
+
+
+将 “9999999999999999999” 转换成长整数
+
+
+
+In : a = 9999999999999L
+
+In : type(a)
+Out: long
+
+In : a = "9999999999"
+
+In : a + "L"
+Out: '9999999999L'
+
+In : type(a)
+Out: str
+
+In  : type(int(a))
+Out : int
+
+
+
+
+
+将 “3.1415926” 转换成一个浮点数
+
+In : a = '3.1415926'
+
+In : a = float(a)
+
+In : type(a)
+Out: float
+
+
+
+
+
+
+
+将 123 转换成一个字符串
+
+
+In  : a = 123
+
+In  : a = str(a)
+
+In  : type(a)
+Out: str
+
+
+
+
+现有以下字符串
+字符串1：" abc deFGh&*ijkl opq mnrst((uvwxyz "
+字符串2：" ABC#DEF GH%IJ MNOPQ KLRS&&TUVWX(*&YZ "
+使用字符串的各种方法转换成如下方式
+ABCDEFGHIJKLMNOPQRSTUVWXYZzyxwvutsrqponmlkjihgfedcba
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+练习2：
+现有列表
+list1 = ['XXXX', 'b', 3, 'c', '&', 'a', 3, '3', 3, 'aa', '3', 'XXXX']
+list2 = ['e', 'f', 'g']
+要求对其做以下操作：
+1. 取出 ‘XXXX’ 中间的部分，形成一个新的列表list3
+
+In  : list1 = ['XXXX', 'b', 3, 'c', '&', 'a', 3, '3', 3, 'aa', '3', 'XXXX']
+
+In  : list1[1:-1]
+Out : ['b', 3, 'c', '&', 'a', 3, '3', 3, 'aa', '3']
+
+
+
+
+
+2. 对list3 做一下几部操作
+1）删除特殊符号
+In : list3
+Out: ['b', 3, 'c', '&', 'a', 3, '3', 3, 'aa', '3']
+
+In : del list3[3]
+
+In : list3
+Out: ['b', 3, 'c', 'a', 3, '3', 3, 'aa', '3']
+
+
+2）统计 3 在list3中出现的次数
+
+In  : list3
+Out : ['b', 3, 'c', 'a', 3, '3', 3, 'aa', '3']
+
+In  : list3.count(3)        #当是数值时，输出3次
+Out : 3
+
+In  : list3.count('3')  #当是字符串时，输出2次
+Out : 2
+
+
+
+3）用最简短的代码去除list3中 26个字母以外的元素(要求只能对list3操作)
+
+
+
+4）对list3排序
+5）在末尾追加'd',并把list2追加到list3
+
+
+
+
+
+
+
+
+
+
+
+
+

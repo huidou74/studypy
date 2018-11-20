@@ -1,0 +1,113 @@
+练习1：将 “123” 转换成整数
+a = int(a)
+type(a)
+ int
+
+将 “9999999999999999999” 转换成长整数
+a = 9999999999999L
+type(a)
+long
+
+
+将 “3.1415926” 转换成一个浮点数
+In : a = '3.1415926'
+In : a = float(a)
+In : type(a)
+Out: float
+
+将 123 转换成一个字符串现有以下字符串字符串1：" abc deFGh&ijkl opq mnrst((uvwxyz "
+字符串2：" ABC#DEF GH%IJ MNOPQ KLRS&&TUVWX(&YZ "使用字符串的各种方法转换成如下方式ABCDEFGHIJKLMNOPQRSTUVWXYZzyxwvutsrqponmlkjihgfedcba
+方法1：
+a = " abc deFGh&ijkl opq mnrst((uvwxyz "
+b = " ABC#DEF GH%IJ MNOPQ KLRS&&TUVWX(&YZ "
+In : filter(str.isalpha, a).upper() + filter(str.isalpha, b).lower()[::-1]
+Out: 'ABCDEFGHIJKLOPQMNRSTUVWXYZzyxwvutsrlkqponmjihgfedcba'
+
+方法2：
+In : a = ' ABC#DEF GH%IJ MNOPQ KLRS&&TUVWX(&YZ '
+In : aa = a.translate(None,'!@#$%^&()_+ ')
+In : aa
+Out: 'ABCDEFGHIJMNOPQKLRSTUVWXYZ'
+
+
+In : b = ' abc deFGh&ijkl opq mnrst((uvwxyz '
+In : b1 = c.translate(None,'!@#$%^&()_+ ')    # c.translate(None,'!@#$%^&*()_+ ')过滤特殊字符
+In : b2 = d.lower()         #全部小写   
+Out: 'abcdefghijklopqmnrstuvwxyz'   
+b3 = list(b2)     
+In : b3.sort()
+In : b4 = b3[::-1]
+c = ''.join(b4)   #使用join 将列表转换成字符串
+c
+'zyxwvutsrqponmlkjihgfedcba'
+In : aa+c           #使用 + 连接字符串
+Out: 'ABCDEFGHIJKLMNOPQRSTUVWXYZzyxwvutsrqponmlkjihgfedcba'
+
+
+
+
+
+
+练习2：现有列表list1 = ['XXXX', 'b', 3, 'c', '&', 'a', 3, '3', 3, 'aa', '3', 'XXXX']
+list2 = ['e', 'f', 'g']要求对其做以下操作：1. 取出 ‘XXXX’ 中间的部分，形成一个新的列表list3
+In  : list1[1:-1]
+Out : ['b', 3, 'c', '&', 'a', 3, '3', 3, 'aa', '3']
+
+2. 对list3 做一下几部操作
+1）删除特殊符号
+In : del list3[3]
+In : list3
+Out: ['b', 3, 'c', 'a', 3, '3', 3, 'aa', '3']
+
+2）统计 3 在list3中出现的次数
+In  : list3
+Out : ['b', 3, 'c', 'a', 3, '3', 3, 'aa', '3']
+In  : list3.count(3)        #当是数值时，输出3次
+Out : 3
+In  : list3.count('3')      #当是字符串时，输出2次
+Out : 2
+
+3）用最简短的代码去除list3中 26个字母以外的元素(要求只能对list3操作)
+方法1：
+[ i for i in list3 if str(i).isalpha() ]
+
+方法2：
+list3.sort()
+del list3[0:4]
+In : list3
+Out: ['a', 'aa', 'b', 'c']
+4）对list3排序
+list3.sort()     #正序
+list3.reverse    #反序
+
+5）在末尾追加'd',并把list2追加到list3
+list3.append('d')     #列表追加
+list2.extend(list3)   #元组追加
+
+
+
+
+练习3. 现有两个变量a = ('h',)b = ('h')1）将a和b分别追加到上一题的list3中，观察有什么区别
+In : list3.append(a)    #列表追加
+In : list3.append(b)    
+In : list3
+Out: ['a', 'aa', 'b', 'c', 'd', ('h',), 'h']
+区别是  a  是元组，b 是字符串
+
+
+2）将1生成的list3转换成元组(扩展：自己搜索方法)
+In : list3
+Out: ['a', 'aa', 'b', 'c', 'd', ('h',), 'h']
+In : tuple(list3)
+Out: ('a', 'aa', 'b', 'c', 'd', ('h',), 'h')
+
+
+3）打印出只有一个元素'h'的元组，在2中生成的元组中的索引
+print  ‘h’
+In : print ( tuple(list3)[-2])
+    ('h',)
+
+找索引
+In : t1 = tuple(list3)
+In : t1.index(('h',))
+Out: 5
