@@ -1,0 +1,154 @@
+1.输入三个整数x,y,z，请把这三个数由小到大输出。 
+程序分析：我们想办法把最小的数放到x上，先将x与y进行比较，如果x>y则将x与y的值进行交换， 然后再用x与z进行比较，如果x>z则将x与z的值进行交换，这样能使x最小。
+
+#!/usr/bin/python
+x = input("input number for x : ")
+y = input("input number for y : ")
+z = input("input number for z : ")
+a = 0
+if x > y:
+#   x <--> y
+    a = x
+    x = y
+    y = a
+    if x > z:
+#     x <--> z
+        a = x
+        x = z
+        z = a
+if  y > z:
+#   y <--> z
+    a = y
+    y = z
+    z = a
+    if x > y :
+        a = x
+        x = y
+        y = a
+print str("x : ")+ str(x)
+print str("y : ")+ str(y)
+print str("z : ")+ str(z)
+
+
+输出结果：
+
+[root@hc python]# python input_xyz.py 
+input number for x : 1
+input number for y : 2
+input number for z : 3
+x : 1
+y : 2
+z : 3
+input number for x : 1
+input number for y : 3
+input number for z : 2
+x : 1
+y : 2
+z : 3
+input number for x : 2
+input number for y : 1
+input number for z : 3
+x : 1
+y : 2
+z : 3
+input number for x : 2
+input number for y : 3
+input number for z : 1
+x : 1
+y : 2
+z : 3
+input number for x : 3
+input number for y : 1
+input number for z : 2
+x : 1
+y : 2
+z : 3
+input number for x : 3
+input number for y : 2
+input number for z : 1
+x : 1
+y : 2
+z : 3
+
+
+
+
+
+
+
+2. 企业发放的奖金根据利润提成。
+
+利润(I)低于或等于10万元时，奖金可提10%；
+利润高于10万元，低于20万元时，低于10万元的部分按10%提成，高于10万元的部分，可可提成7.5%；
+20万到40万之间时，高于20万元的部分，可提成5%；
+40万到60万之间时，高于40万元的部分，可提成3%；
+60万到100万之间时，高于60万元的部分，可提成1.5%，高于 100万元时，超过100万元的部分按1%提成，
+从键盘输入当月利润I，求应发放奖金总数？
+
+
+
+答：
+
+#!/usr/bin/python
+i = raw_input("input the money: ")
+i = float(i)/10000
+
+# i <= 10
+if i <= 10:
+    z = (i*0.1)*10000
+    print (str("i<10   :") + str(z)) + " RMB"
+
+# 10 - 20 
+elif i >= 10 and i < 20:
+    a = (i*0.1)*10000
+    b = ((i-10)*0.1)*10000
+    print str("i<10    :") + str(a) + " RMB"
+    print str("20>i<10 :") + str(b) + " RMB"
+    print "total  :" ,a+b,
+    print "RMB"
+
+#20 - 40
+elif i >= 20 and i < 40:
+    c = ((i-20)*0.05)*10000
+    print str("40>i<20  :") + str(c) + " RMB"
+
+#40 - 60
+elif i >= 40 and i < 60:
+    d = ((i-40)*0.03)*10000
+    print str("60>i<40  :") + str(d) + " RMB"
+
+#60 - 100 . >100
+elif i >= 60 and i < 100:
+    e = ((i-60)*0.015)*10000
+    print str("100>i<60  :") + str(e) + " RMB"
+elif i >= 100:
+    f = ((i-100)*0.01)*10000
+    print str("i>100    :") + str(f) + " RMB"
+
+
+
+输出结果
+
+[root@hc python]# python total_i.py 
+input the money: 100000
+i<10   :10000.0 RMB
+
+[root@hc python]# python total_i.py 
+input the money: 123456768
+i>100    :1224567.68 RMB
+
+[root@hc python]# python total_i.py 
+input the money: 1200000
+i>100    :2000.0 RMB
+
+[root@hc python]# python total_i.py 
+input the money: 23
+i<10   :2.3 RMB
+
+[root@hc python]# python total_i.py 
+input the money: 230000
+40>i<20  :1500.0 RMB
+
+[root@hc python]# python total_i.py 
+input the money: 390000
+40>i<20  :9500.0 RMB
