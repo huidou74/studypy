@@ -1117,16 +1117,85 @@ aaa
 
 
 
+**************************
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
+**************************
+python 2  解释出来是用的ASCII 码
+
+python 3 默认 utf-8
+
+
+
+类型转换
+
+help(int)
+
+class int(object)
+ |  int(x=0) -> int or long
+ |  int(x, base=10) -> int or long
+ |  
+ |  Convert a number or string to an integer, or return 0 if no arguments
+ |  are given.  If x is floating point, the conversion truncates towards zero.
+ |  If x is outside the integer range, the function returns a long instead.
+ |  
+ |  If x is not a number or if base is given, then x must be a string or
+ |  Unicode object representing an integer literal in the given base.  The
+ |  literal can be preceded by '+' or '-' and be surrounded by whitespace.
+ |  The base defaults to 10.  Valid bases are 0 and 2-36.  Base 0 means to
+ |  interpret the base from the string as an integer literal.
 
 
 
 
+十六进制字符串转为十进制
+int('12',16)     #16 为十六进制！
+18
+
+int('0x12',16)
+18
+
+
+十进制转为十六进制
+hex(10)       #括号里面的转为十进制
+'0xa'       #10转16进制
+
+In : type(hex(1))   #返回一个字符串
+Out: str
+
+
+十进制转为字符串
+str(10)
+'10'
+
+
+字符串转为十进制   #必须是纯数字的，不然会报错
+int('10')
 
 
 
 
+MAC 地址转换
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
 
 
+macaddr = 'C8:60:00:8E:6F:aa'     #MAC地址
+mac = macaddr[:-2]           #切片
+a = macaddr[-2:]              #取值
+b = int(a,16)+1                #16转10进制
+if b in range(10):            #判断b是不是在0-9中
+    c = hex(b)[2:]           #是，则10转16进制，切片
+    c = '0' +c           # 因为是单数 所以加个0，都是字符串
+else:
+    c = hex(b)[2:]        #不在0-9内
+    if len(c) == 1:          #判断长度是不是1位数
+        c = '0' + c           #是一位数则加0，不齐
+#c = hex(b)[-2:]
+# c = hex(b).split('x')[-2]  -> '94'
+new = mac+c                 #字符串相连
+print macaddr
+print new.upper()                 #全部大写，不齐
 
 
 
