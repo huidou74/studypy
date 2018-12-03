@@ -1,0 +1,220 @@
+with open("a") as fd:
+    fd.read()
+    fd.seek(0)
+    fd.readlines()
+    fd.seek(0)
+    
+
+
+
+fd.seek (0)   #强制把指针拉回头部。即把索引拉倒0位。
+
+
+data=x if x>y else y
+print data
+
+
+
+
+def fun():
+    x=1
+    print x
+print (fun)   --->   打印内存地址！
+
+
+def funn():
+    x=1
+    print x
+a=funn    #绑定内存地址
+a()     ===   funn()
+
+
+
+本周作业，周围再讲具体做法
+修改nginx.conf 配置文件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+迭代器 和 生成器
+
+num = 0
+while True:
+    print (srting[num])
+    num +=1 
+
+
+
+可迭代对象   --->    .__iter__
+
+迭代器          --->    .__init__     节省空间，节省内存。
+
+文件句柄是迭代器    fd.__next__     --->  即是 迭代器 也是 可迭代对象
+
+
+
+ list1.__iter__()  ==   iter(list1)
+
+LI = list1.__iter__()     ---->      =iter(list1)
+
+print (LI.__next__())        --->   .__next__   从上到下读 ，向下取值	
+
+LI.__next__ == next(LI)
+
+
+
+
+li1 = ['a','b','c']
+
+LI1 = iter(li1)
+
+while True:
+    try:
+        print next(LI1)    
+    except StopIteration:
+        break
+
+
+
+
+
+
+生成器：   生成器 也是  迭代器  ，迭代器也是可迭代对象
+
+def abc():
+    x=1
+    #return x  
+    yield x
+    y=2
+    yield y
+    z = 3
+    yield z
+
+
+
+A=abc()
+print (A)      ---->   生成器    yield   
+
+print (A.__next__())    ---->    输出结果, next 来取值
+
+
+
+
+
+yield     等于暂停
+
+def foo():
+    def wapper():
+        x = []
+        while True:  
+            n = yield x    #  n = yield    是从外往内传递值， yield x 是从内向外传递值
+            x.append(n)
+#        yield x     #是种 语句         x=yield  是表达式
+    return wapper
+
+A=foo()
+yield_JG=A()
+
+yield_JG.__next__()    #第一个yield  会卡到这
+ 
+yield_JG.send(1)     #send 生成器方法  往函数里的x 传递值
+                               #send   还有__next__() 的方法
+                               # 从外往内传值
+
+i = 0
+while True:
+    if i ==6:
+        break
+    JG=yield_JG.send(i)
+    print JG
+    i+=1
+
+
+
+
+
+函数里有yield    这个函数就变的不一样了，并不是立刻去执行代码
+先__iter__( )  再  __next__( )
+才能执行里面的代码
+
+通过__next__()   方法才能拿到 yield 返回的值
+
+
+
+
+except Exception:     --->   捕获所有异常
+
+
+
+
+
+
+
+
+
+
+
+
+
+session保持
+
+{'session':djkahflkdashfldjshfldsjfk1345}
+
+{'session':djkahflkdashfl,'username':'liang','pwd':'11111'}
+
+
+
+主页
+
+登录页
+
+详情页
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
